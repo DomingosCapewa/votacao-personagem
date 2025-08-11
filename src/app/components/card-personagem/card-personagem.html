@@ -1,6 +1,15 @@
-<div class="card">
-  <img [src]="imagem()" [alt]="nome()" />
+
+  <!-- <img [src]="imagem()" [alt]="nome()" />
   <h3>{{ nome() }}</h3>
   <p>Votos: {{ totalVotos() }}</p>
+  <button (click)="votou.emit()">Votar</button> -->
+@for (personagem of personagens(); track $index) {
+  <div class="card">
+  <img src="{{personagem.imagem}}">
+  <h3>{{personagem.nome}}</h3>
+  <p>Votos {{personagem.votos}}</p>
   <button (click)="votou.emit()">Votar</button>
 </div>
+
+  }
+  
