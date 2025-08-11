@@ -5,7 +5,7 @@
   <button (click)="votou.emit()">Votar</button> -->
 @for (personagem of personagens(); track $index) {
   <div class="card">
-  <img src="{{personagem.imagem}}">
+  <img src={{personagem.imagem}}>
   <h3>{{personagem.nome}}</h3>
   <p>Votos {{personagem.votos}}</p>
   <button (click)="votou.emit()">Votar</button>
