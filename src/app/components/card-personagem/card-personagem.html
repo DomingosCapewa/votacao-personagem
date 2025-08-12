@@ -1,15 +1,16 @@
-
-  <!-- <img [src]="imagem()" [alt]="nome()" />
-  <h3>{{ nome() }}</h3>
-  <p>Votos: {{ totalVotos() }}</p>
-  <button (click)="votou.emit()">Votar</button> -->
-@for (personagem of personagens(); track $index) {
-  <div class="card">
-  <img src={{personagem.imagem}}>
-  <h3>{{personagem.nome}}</h3>
-  <p>Votos {{personagem.votos}}</p>
-  <button (click)="votou.emit()">Votar</button>
+ <div class="card">
+    @for (personagem of personagens(); track personagem.id) {
+     
+      <img src={{personagem.imagem}}>
+      <h3>{{personagem.nome}}</h3>
+      @if (personagem.votos == 0) {
+          <i style="color: grey;">Nenhum voto ainda</i>
+      } @else {
+          <p>Votos {{personagem.votos}}</p>
+      }
+      <button (click)="votou.emit($index)">Votar</button>
+    
+      }
 </div>
 
-  }
   

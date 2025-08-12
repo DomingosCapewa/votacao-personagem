@@ -1,10 +1,13 @@
 <section class="grid">
-  <app-card-personagem
+  
+ @for (personagem of personagem; track  personagem.id) {
+<app-card-personagem
     [nome]="nomePersonagem"
     [imagem]="imagePersonagem"
     [totalVotos]="qtdVotosPersonagem"
-    [personagens]="personagem"
-    (votou)="incremetarVotoPersonagem()"
-  />
-
+    [personagens]="[personagem]"
+    (votou)="incremetarVotoPersonagem($index)"
+  
+  /> 
+}
 </section>

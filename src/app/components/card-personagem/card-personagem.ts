@@ -7,10 +7,12 @@ import { Component, input, output } from '@angular/core';
   styleUrl: './card-personagem.css',
 })
 export class CardPersonagem {
+  id = input<number>()
   nome = input<string>();
   imagem = input<string>();
   totalVotos = input<number>();
-  personagens = input<Array<{ nome: string; imagem: string; votos: number }>>();
+  personagens = input<Array<{ id: number; nome: string; imagem: string; votos: number }>>();
 
-  votou = output();
+  votou = output<number>()
+
 }

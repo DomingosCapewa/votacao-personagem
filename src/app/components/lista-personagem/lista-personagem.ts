@@ -44,18 +44,19 @@ export class ListaPersonagem {
     {
       id: 4,
       nome: 'Beth',
-      imagem: 'https://tse1.mm.bing.net/th/id/OIP.xP1JRhqSRSllNLNsXgxrPQHaJN?r=0&cb=thfc1&rs=1&pid=ImgDetMain&o=7&rm=3',
+      imagem: 'https://rickandmortyapi.com/api/character/avatar/4.jpeg',
       votos: 0
     },
     {
       id: 5,
       nome: 'Krombopulos',
-      imagem: 'https://tse1.mm.bing.net/th/id/OIP.unp4tsLC6y4ucyFafg7gwQHaEM?r=0&cb=thfc1&rs=1&pid=ImgDetMain&o=7&rm=3',
+      imagem: 'https://rickandmortyapi.com/api/character/avatar/10.jpeg',
       votos: 0
     },
   ];
 
-  incremetarVotoPersonagem() {
-    this.qtdVotosPersonagem++;
+  incremetarVotoPersonagem(id: number) {
+    this.personagem[id].votos++;
+
   }
 }
