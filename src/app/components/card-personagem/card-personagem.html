@@ -4,11 +4,11 @@
       <img src={{personagem.imagem}}>
       <h3>{{personagem.nome}}</h3>
       @if (personagem.votos == 0) {
-          <i style="color: grey;">Nenhum voto ainda</i>
+          <i class="sem_votos">Nenhum voto ainda</i>
       } @else {
           <p>Votos {{personagem.votos}}</p>
       }
-      <button (click)="votou.emit($index)">Votar</button>
+      <button (click)="votou.emit(id()!)">Votar</button>
     
       }
 </div>

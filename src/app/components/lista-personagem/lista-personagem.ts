@@ -22,7 +22,7 @@ export class ListaPersonagem {
   imagePersonagem = 'https://rickandmortyapi.com/api/character/avatar/1.jpeg';
   qtdVotosPersonagem = 0;
 
-  personagem: IPersonagem[] = [
+  personagens: IPersonagem[] = [
     {
       id: 1,
       nome: 'Rick',
@@ -56,7 +56,8 @@ export class ListaPersonagem {
   ];
 
   incremetarVotoPersonagem(id: number) {
-    this.personagem[id].votos++;
-
+    const personagem = this.personagens.find((personagem) => personagem.id === id );
+    personagem!.votos++;
+    console.log(personagem)
   }
 }
