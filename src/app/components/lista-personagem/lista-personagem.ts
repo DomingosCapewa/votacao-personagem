@@ -24,17 +24,19 @@ export class ListaPersonagem {
   qtdVotosPersonagem = 0;
 
   personagens : IPersonagem[] = [];
-
+  
     
   constructor(private personagensService: Personagens) {  
     this.personagens = this.personagensService.getPersonagens();
 
+    
   }
 
 
   incremetarVotoPersonagem(id: number) {
-    const personagem = this.personagens.find((personagem) => personagem.id === id );
-    personagem!.votos++;
-    console.log(personagem)
+    // const personagem = this.personagens.find((personagem) => personagem.id === id );
+    // personagem!.votos++;
+    // console.log(personagem)
+  
   }
 }

@@ -40,4 +40,13 @@ export class Personagens {
   getPersonagens(){
    return this.personagens
   }
+
+  adicionarVoto(idDoPersonagem: number)
+  {
+    const personagem = this.personagens.find(p => p.id === idDoPersonagem);
+    if (personagem) {
+      personagem.votos += 1;
+    }
+    return personagem;
+  }
 }
