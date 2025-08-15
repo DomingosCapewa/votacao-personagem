@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { CardPersonagem } from '../card-personagem/card-personagem';
-import { Personagens } from '../../services/personagens';
+import { Personagens } from '../../services/Personagens';
+
 
 
 
@@ -28,15 +29,10 @@ export class ListaPersonagem {
     
   constructor(private personagensService: Personagens) {  
     this.personagens = this.personagensService.getPersonagens();
-
-    
   }
 
 
   incremetarVotoPersonagem(id: number) {
-    // const personagem = this.personagens.find((personagem) => personagem.id === id );
-    // personagem!.votos++;
-    // console.log(personagem)
-  
+    this.personagensService.adicionarVoto(id);
   }
 }
