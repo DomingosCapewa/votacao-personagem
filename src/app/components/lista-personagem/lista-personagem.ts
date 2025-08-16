@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { CardPersonagem } from '../card-personagem/card-personagem';
 import { Personagens } from '../../services/Personagens';
 
@@ -19,7 +19,7 @@ interface IPersonagem {
   templateUrl: './lista-personagem.html',
   styleUrl: './lista-personagem.css',
 })
-export class ListaPersonagem {
+export class ListaPersonagem implements OnInit, OnDestroy {
   nomePersonagem = 'Rick Sanchez';
   imagePersonagem = 'https://rickandmortyapi.com/api/character/avatar/1.jpeg';
   qtdVotosPersonagem = 0;
@@ -28,11 +28,20 @@ export class ListaPersonagem {
   
     
   constructor(private personagensService: Personagens) {  
+        console.log('constructor')
+  }
+  
+  ngOnInit(): void {
+    console.log('ngOnInit');
     this.personagens = this.personagensService.getPersonagens();
+  }
+  
+  incremetarVotoPersonagem(id: number) {
+    this.personagensService.adicionarVoto(id);
   }
 
 
-  incremetarVotoPersonagem(id: number) {
-    this.personagensService.adicionarVoto(id);
+  ngOnDestroy(): void {
+    console.log('ngOnDestroy');
   }
 }
