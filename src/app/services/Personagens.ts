@@ -1,9 +1,10 @@
-import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Injectable, OnInit } from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
 })
-export class Personagens {
+export class Personagens implements OnInit {
    personagens = [
     {
       id: 1,
@@ -37,8 +38,15 @@ export class Personagens {
     },
   ];
 
+   private apiUrl = 'http://localhost:3000/personagens';
+
+  constructor(private http: HttpClient){}
+
+   ngOnInit() {
+  }
+
   getPersonagens(){
-   return this.personagens
+      return this.http.get(this.apiUrl);
   }
 
   adicionarVoto(idDoPersonagem: number)

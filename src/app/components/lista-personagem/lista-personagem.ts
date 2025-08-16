@@ -33,8 +33,13 @@ export class ListaPersonagem implements OnInit, OnDestroy {
   
   ngOnInit(): void {
     console.log('ngOnInit');
-    this.personagens = this.personagensService.getPersonagens();
+      this.personagensService.getPersonagens().subscribe(
+      (data: any) => {
+        this.personagens = data;
+      }
+    );
   }
+  
   
   incremetarVotoPersonagem(id: number) {
     this.personagensService.adicionarVoto(id);
