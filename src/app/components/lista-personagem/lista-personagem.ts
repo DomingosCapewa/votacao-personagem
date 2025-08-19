@@ -10,7 +10,7 @@ interface IPersonagem {
   id: number;
   nome: string;
   imagem: string;
-  votos: number;
+  totalVotos: number;
 }
 
 @Component({
@@ -30,19 +30,31 @@ export class ListaPersonagem implements OnInit, OnDestroy {
   constructor(private personagensService: Personagens) {  
         console.log('constructor')
   }
-  
-  ngOnInit(): void {
-    console.log('ngOnInit');
-      this.personagensService.getPersonagens().subscribe(
+
+  carregarPersonagens() {
+    this.personagensService.getPersonagens().subscribe(
       (data: any) => {
         this.personagens = data;
       }
     );
   }
+
+  ngOnInit(): void {
+    console.log('ngOnInit');
+    this.carregarPersonagens();
+  }
   
   
-  incremetarVotoPersonagem(id: number) {
-    this.personagensService.adicionarVoto(id);
+  incrementarVotoPersonagem(event: { id: number; totalVotos: number }) {
+    this.personagensService.adicionarVoto(event.id, event.totalVotos).subscribe(
+      (data: any) => {
+        console.log('Voto adicionado:', data);
+        this.carregarPersonagens();
+      },
+      (error: any) => {
+        console.error('Erro ao adicionar voto:', error);
+      }
+    );
   }
 
 

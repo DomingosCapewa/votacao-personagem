@@ -7,7 +7,7 @@
     [totalVotos]="qtdVotosPersonagem"
     [personagens]="[personagem]"
     [id]="personagem.id"
-    (votou)="incremetarVotoPersonagem($event)"
+    (votou)="incrementarVotoPersonagem({ id: personagem.id, totalVotos: personagem.totalVotos })"
   
   /> 
 } @empty {

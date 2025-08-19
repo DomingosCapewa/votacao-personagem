@@ -38,7 +38,7 @@ export class Personagens implements OnInit {
     },
   ];
 
-   private apiUrl = 'http://localhost:3000/personagens';
+   private apiUrl = 'http://localhost:3000';
 
   constructor(private http: HttpClient){}
 
@@ -46,15 +46,17 @@ export class Personagens implements OnInit {
   }
 
   getPersonagens(){
-      return this.http.get(this.apiUrl);
+      return this.http.get(`${this.apiUrl}/personagens`);
   }
 
-  adicionarVoto(idDoPersonagem: number)
+  adicionarVoto(idDoPersonagem: number, totalVotos: number)
   {
-    const personagem = this.personagens.find(p => p.id === idDoPersonagem);
-    if (personagem) {
-      personagem.votos += 1;
-    }
-    return personagem;
+    
+    // const personagem = this.personagens.find(p => p.id === idDoPersonagem);
+    // if (personagem) {
+    //   personagem.votos += 1;
+    // }
+    return this.http.patch(`${this.apiUrl}/personagens/${idDoPersonagem}`, { totalVotos: totalVotos + 1 });
   }
+
 }

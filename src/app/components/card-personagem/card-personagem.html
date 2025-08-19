@@ -3,13 +3,13 @@
      
       <img src={{personagem.imagem}}>
       <h3>{{personagem.nome}}</h3>
-      @if (personagem.votos == 0) {
+      @if (personagem.totalVotos == 0) {
           <i class="sem_votos">Nenhum voto ainda</i>
       } @else {
-          <p>Votos {{personagem.votos}}</p>
+          <p>Votos {{personagem.totalVotos}}</p>
       }
-      <button (click)="votou.emit(id()!)">Votar</button>
-    
+      <button (click)="votou.emit({id: id()!, totalVotos: totalVotos()!})">Votar</button>
+
       }
 </div>
 

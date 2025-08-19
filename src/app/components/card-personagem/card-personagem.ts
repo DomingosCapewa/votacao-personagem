@@ -11,8 +11,8 @@ export class CardPersonagem {
   nome = input<string>();
   imagem = input<string>();
   totalVotos = input<number>();
-  personagens = input<Array<{ id: number; nome: string; imagem: string; votos: number }>>();
+  personagens = input<Array<{ id: number; nome: string; imagem: string; totalVotos: number }>>();
 
-  votou = output<number>()
+  votou = output<{ id: number; totalVotos: number }>();
 
 }
