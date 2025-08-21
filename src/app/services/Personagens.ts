@@ -1,42 +1,55 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, OnInit } from '@angular/core';
 
+
+export interface IPersonagem {
+  id: number;
+  nome: string;
+  imagem: string;
+  totalVotos: number;
+}
+ 
+
 @Injectable({
   providedIn: 'root'
 })
+
+
 export class Personagens implements OnInit {
-   personagens = [
-    {
-      id: 1,
-      nome: 'Rick',
-      imagem: 'https://rickandmortyapi.com/api/character/avatar/1.jpeg',
-      votos: 0
-    },
-    {
-      id: 2,
-      nome: 'Morty',
-      imagem: 'https://rickandmortyapi.com/api/character/avatar/2.jpeg',
-      votos: 0
-    },
-    {
-      id: 3,
-      nome: 'Summer',
-      imagem: 'https://rickandmortyapi.com/api/character/avatar/3.jpeg',
-      votos: 0
-    },
-    {
-      id: 4,
-      nome: 'Beth',
-      imagem: 'https://rickandmortyapi.com/api/character/avatar/4.jpeg',
-      votos: 0
-    },
-    {
-      id: 5,
-      nome: 'Krombopulos',
-      imagem: 'https://rickandmortyapi.com/api/character/avatar/10.jpeg',
-      votos: 0
-    },
-  ];
+  //  personagens = [
+  //   {
+  //     id: 1,
+  //     nome: 'Rick',
+  //     imagem: 'https://rickandmortyapi.com/api/character/avatar/1.jpeg',
+  //     votos: 0
+  //   },
+  //   {
+  //     id: 2,
+  //     nome: 'Morty',
+  //     imagem: 'https://rickandmortyapi.com/api/character/avatar/2.jpeg',
+  //     votos: 0
+  //   },
+  //   {
+  //     id: 3,
+  //     nome: 'Summer',
+  //     imagem: 'https://rickandmortyapi.com/api/character/avatar/3.jpeg',
+  //     votos: 0
+  //   },
+  //   {
+  //     id: 4,
+  //     nome: 'Beth',
+  //     imagem: 'https://rickandmortyapi.com/api/character/avatar/4.jpeg',
+  //     votos: 0
+  //   },
+  //   {
+  //     id: 5,
+  //     nome: 'Krombopulos',
+  //     imagem: 'https://rickandmortyapi.com/api/character/avatar/10.jpeg',
+  //     votos: 0
+  //   },
+  // ];
+
+  
 
    private apiUrl = 'http://localhost:3000';
 
@@ -47,6 +60,9 @@ export class Personagens implements OnInit {
 
   getPersonagens(){
       return this.http.get(`${this.apiUrl}/personagens`);
+  }
+  getPersonagemPorId (id: number) {
+    return this.http.get<IPersonagem>(`${this.apiUrl}/personagens/${id}`);
   }
 
   adicionarVoto(idDoPersonagem: number, totalVotos: number)

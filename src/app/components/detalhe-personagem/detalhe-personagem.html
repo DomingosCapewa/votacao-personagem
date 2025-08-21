@@ -1,0 +1,18 @@
+@if(personagem){
+    <div class="detalhe-wrapper">
+  <h2 class="titulo">🌟 Detalhes do Personagem</h2>
+  <div class="detalhe-conteudo">
+    <img class="imagem" [src]="personagem.imagem" alt="imagem" />
+    <div class="info">
+      <p class="nome">{{ personagem.nome }}</p>
+      <p class="votos">
+        🔥 Votos: <span>{{ personagem.totalVotos }}</span>
+      </p>
+    </div>
+  </div>
+</div>
+}
+@else {
+    <p>Personagem não encontrado.</p>
+}
+

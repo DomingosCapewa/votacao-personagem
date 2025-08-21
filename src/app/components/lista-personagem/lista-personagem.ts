@@ -1,17 +1,12 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { CardPersonagem } from '../card-personagem/card-personagem';
-import { Personagens } from '../../services/Personagens';
+import { IPersonagem, Personagens } from '../../services/Personagens';
 
 
 
 
 
-interface IPersonagem {
-  id: number;
-  nome: string;
-  imagem: string;
-  totalVotos: number;
-}
+
 
 @Component({
   selector: 'app-lista-personagem',
@@ -24,7 +19,7 @@ export class ListaPersonagem implements OnInit, OnDestroy {
   imagePersonagem = 'https://rickandmortyapi.com/api/character/avatar/1.jpeg';
   qtdVotosPersonagem = 0;
 
-  personagens : IPersonagem[] = [];
+   personagens : IPersonagem[] = [];
   
     
   constructor(private personagensService: Personagens) {  
